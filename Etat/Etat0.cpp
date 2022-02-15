@@ -4,17 +4,15 @@
 
 #include <iostream>
 #include "Etat0.h"
-#include "Etat4.h"
+#include "Etat3.h"
 #include "Etat2.h"
 #include "Etat1.h"
-
-using namespace std;
 
 void Etat0::transition(Automate * d, Symbole * s){
 
     switch(*s) {
         case INT :
-            d->Decalage(new Etat4(), s);
+            d->Decalage(new Etat3(), s);
             break;
         case OPENPAR :
             d->Decalage(new Etat2(), s);

@@ -29,9 +29,8 @@ class Entier : public Symbole {
 
 class Expression : public Symbole {
     public:
-        Entier(int v) : Symbole(INT), valeur(v) { }
-        ~Entier() { }
-        virtual void Affiche();
+        Expression(int v) : Symbole(EXPR), valeur(v) { }
+        ~Expression() { }
     protected:
         int valeur;
 };
