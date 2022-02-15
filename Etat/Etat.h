@@ -10,6 +10,7 @@
 #include "../Automate.h"
 #include <map>
 
+
 class Etat {
 
 public :
@@ -21,7 +22,7 @@ public :
 
     }
 
-protected :
+public :
     virtual void transition(Automate & d, Symbole & s);
 };
 
