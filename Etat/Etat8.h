@@ -5,8 +5,10 @@
 #ifndef UNTITLED_ETAT8_H
 #define UNTITLED_ETAT8_H
 
+#include "Etat.h"
 
-class Etat8 {
+class Etat8 : public Etat{
+public :
     Etat8(){
 
     }

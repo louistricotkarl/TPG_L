@@ -12,16 +12,16 @@ void Etat7::transition(Automate * d, Symbole * s){
 
     switch(*s) {
         case PLUS :
-            d->Reduction(new Etat2(), s);
+            d->Reduction(2);
             break;
         case MULT :
             d->Decalage(new Etat5(), s);
             break;
         case CLOSEPAR:
-            d->Reduction(new Etat2(), s);
+            d->Reduction(2);
             break;
         case FIN :
-            d->Reduction(new Etat2(), s);
+            d->Reduction(2);
             break;
         default:
             d->Error();

@@ -19,6 +19,7 @@ public :
     ~Etat(){
     }
     virtual void transition(Automate * d, Symbole * s) = 0;
+
 };
 
 

@@ -5,7 +5,6 @@
 #include "Etat8.h"
 #include "Etat3.h"
 #include "Etat5.h"
-#include "Etat2.h"
 
 using namespace std;
 
@@ -13,16 +12,16 @@ void Etat8::transition(Automate * d, Symbole * s){
 
     switch(*s) {
         case PLUS :
-            d->Reduction(new Etat3(), s);
+            d->Reduction(3);
             break;
         case MULT :
-            d->Reduction(new Etat3(), s);
+            d->Reduction(3);
             break;
         case CLOSEPAR:
-            d->Reduction(new Etat3(), s);
+            d->Reduction(3);
             break;
         case FIN :
-            d->Reduction(new Etat3(), s);
+            d->Reduction(3);
             break;
         default:
             d->Error();

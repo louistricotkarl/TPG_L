@@ -17,6 +17,7 @@ Automate::Automate(Lexer &l) : lexer(l) {
 }
 
 void Automate::Decalage(Etat * e, Symbole * s){
+    cout << "décalage" << endl;
     etats.push_back(e);
     symboles.push_back(s);
     if(*s != EXPR)
@@ -32,22 +33,24 @@ void Automate::Accepter(){
 }
 
 void Automate::Reduction(int r){
-    Symbole * expression;
+    cout << "réduction " << r << endl;
+
     int tmp;
 
     switch(r){
         case 5:
-            expression = new Expression(*symboles.back());
+            tmp = ((Entier *)symboles.back())->GetValeur();
             symboles.pop_back();
             etats.pop_back();
+            symboles.push_back(new Expression(tmp));
             break;
 
         case 2 :
             tmp = 0;
-            tmp += *symboles.back();
+            tmp += ((Entier *)symboles.back())->GetValeur();
             symboles.pop_back();
             symboles.pop_back();
-            tmp += *symboles.back();
+            tmp += ((Entier *)symboles.back())->GetValeur();
             symboles.pop_back();
             for(int i = 0; i < 3;i++){
                 etats.pop_back();
@@ -58,10 +61,10 @@ void Automate::Reduction(int r){
             break;
         case 3:
             tmp = 0;
-            tmp += *symboles.back();
+            tmp += ((Entier *)symboles.back())->GetValeur();
             symboles.pop_back();
             symboles.pop_back();
-            tmp *= *symboles.back();
+            tmp *= ((Entier *)symboles.back())->GetValeur();
             symboles.pop_back();
             for(int i = 0; i < 3;i++){
                 etats.pop_back();
@@ -71,7 +74,7 @@ void Automate::Reduction(int r){
 
         case 4:
             symboles.pop_back();
-            symboles.push_back(new Expression(*symboles.back()));
+            symboles.push_back(new Expression(((Entier *)symboles.back())->GetValeur()));
             symboles.pop_back();
             symboles.pop_back();
 
@@ -83,10 +86,10 @@ void Automate::Reduction(int r){
 
 }
 void Automate::Execute() {
-
     Symbole * s;
-
     while(*(s=lexer.Consulter())!=FIN) {
+        s->Affiche();
+        cout << etats.back() << endl;
         etats.back()->transition(this,s);
     }
 }

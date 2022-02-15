@@ -7,20 +7,20 @@
 
 using namespace std;
 
-void Etat8::transition(Automate * d, Symbole * s){
+void Etat9::transition(Automate * d, Symbole * s){
 
     switch(*s) {
         case PLUS :
-            d->Reduction(new Etat4(), s);
+            d->Reduction(4);
             break;
         case MULT :
-            d->Reduction(new Etat4(), s);
+            d->Reduction(4);
             break;
         case CLOSEPAR:
-            d->Reduction(new Etat4(), s);
+            d->Reduction(4);
             break;
         case FIN :
-            d->Reduction(new Etat4(), s);
+            d->Reduction(4);
             break;
         default:
             d->Error();
