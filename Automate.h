@@ -9,6 +9,7 @@
 #include "symbole.h"
 #include "Etat/Etat.h"
 #include "lexer.h"
+#include <map>
 
 using namespace std;
 
@@ -30,6 +31,7 @@ private :
     Lexer lexer;
     queue<Etat> etats;
     queue<Symbole> symbole;
+    map<Etat> allEtat;
 };
 
 
