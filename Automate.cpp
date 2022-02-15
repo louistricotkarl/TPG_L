@@ -20,8 +20,8 @@ void Automate::Decalage(Etat * e, Symbole * s){
         lexer.Avancer();
 }
 
-Automate:Error(){
-    symbles.push_back(new Symbole(ERR));
+void Automate::Error(){
+    symboles.push_back(new Symbole(EXPR));
 };
 void Automate::Execute() {
 

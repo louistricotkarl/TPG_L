@@ -6,15 +6,20 @@
 #define UNTITLED_ETAT4_H
 
 
-class Etat4 {
+#include "Etat.h"
+
+class Etat4 : public Etat{
+
+public :
+
     Etat4(){
 
     }
     ~Etat4() {
 
     }
+
     virtual void transition(Automate * d, Symbole * s);
 };
-
 
 #endif //UNTITLED_ETAT4_H
