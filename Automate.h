@@ -32,6 +32,10 @@ public:
 
     void Execute();
 
+    void Accepter();
+
+    void Reduction(int r);
+
 
 private :
     Lexer lexer;
