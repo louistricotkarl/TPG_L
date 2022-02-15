@@ -6,8 +6,8 @@
 #include "Etat/Etat0.h"
 
 Automate::Automate(Lexer &l) : lexer(l) {
-    Etat0 e;
-    etats.push(e);
+    Etat0 * e = new Etat0();
+    etats.push_back(e);
 }
 
 void Automate::Execute() {
@@ -15,7 +15,7 @@ void Automate::Execute() {
     Symbole * s;
 
     while(*(s=lexer.Consulter())!=FIN) {
-        etats.front().transition(*this,*s);
+        etats.front()->transition(this,s);
         lexer.Avancer();
     }
 }

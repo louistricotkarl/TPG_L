@@ -22,8 +22,7 @@ public :
 
     }
 
-public :
-    virtual void transition(Automate & d, Symbole & s);
+    virtual void transition(Automate * d, Symbole * s) = 0;
 };
 
 

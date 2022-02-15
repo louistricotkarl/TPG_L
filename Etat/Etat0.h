@@ -7,7 +7,7 @@
 
 #include "etat.h"
 #include "../symbole.h"
-#include "../automate.h"
+#include "../Automate.h"
 
 class Etat0 : public Etat {
 
@@ -16,7 +16,11 @@ public :
     Etat0(){
 
     }
-    virtual void transition(Automate & d, Symbole & s);
+    ~Etat0() {
+
+    }
+
+    virtual void transition(Automate * d, Symbole * s);
 };
 
 

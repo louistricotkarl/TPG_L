@@ -5,14 +5,15 @@
 #ifndef UNTITLED_AUTOMATE_H
 #define UNTITLED_AUTOMATE_H
 
-#include <queue>
+#include <deque>
 #include "symbole.h"
 #include "lexer.h"
 #include <map>
 
 class Etat;
 class Etat0;
-class Etat1;
+
+
 
 using namespace std;
 
@@ -30,8 +31,8 @@ public:
 
 private :
     Lexer lexer;
-    queue<Etat> etats;
-    queue<Symbole> symboles;
+    deque<Etat*> etats;
+    deque<Symbole*> symboles;
 };
 
 
