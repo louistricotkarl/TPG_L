@@ -17,11 +17,14 @@ Automate::Automate(Lexer &l) : lexer(l) {
 }
 
 void Automate::Decalage(Etat * e, Symbole * s){
-    cout << "décalage" << endl;
     etats.push_back(e);
     symboles.push_back(s);
-    if(*s != EXPR)
+    if(*s != EXPR){
         lexer.Avancer();
+        s = lexer.Consulter();
+        etats.back()->transition(this,s);
+    }
+
 }
 
 void Automate::Error(){
@@ -33,7 +36,6 @@ void Automate::Accepter(){
 }
 
 void Automate::Reduction(int r){
-    cout << "réduction " << r << endl;
 
     int tmp;
 
@@ -42,7 +44,7 @@ void Automate::Reduction(int r){
             tmp = ((Entier *)symboles.back())->GetValeur();
             symboles.pop_back();
             etats.pop_back();
-            symboles.push_back(new Expression(tmp));
+            etats.back()->transition(this,(new Expression(tmp)));
             break;
 
         case 2 :
@@ -56,7 +58,7 @@ void Automate::Reduction(int r){
                 etats.pop_back();
             }
 
-            symboles.push_back(new Expression(tmp));
+            etats.back()->transition(this,(new Expression(tmp)));
 
             break;
         case 3:
@@ -69,27 +71,25 @@ void Automate::Reduction(int r){
             for(int i = 0; i < 3;i++){
                 etats.pop_back();
             }
-            symboles.push_back(new Expression(tmp));
+            etats.back()->transition(this,(new Expression(tmp)));
             break;
 
         case 4:
             symboles.pop_back();
-            symboles.push_back(new Expression(((Entier *)symboles.back())->GetValeur()));
+            tmp = ((Entier *)symboles.back())->GetValeur();
             symboles.pop_back();
             symboles.pop_back();
 
             for(int i = 0; i < 3;i++){
                 etats.pop_back();
             }
+
+            etats.back()->transition(this,(new Expression(tmp)));
             break;
     }
 
 }
 void Automate::Execute() {
-    Symbole * s;
-    while(*(s=lexer.Consulter())!=FIN) {
-        s->Affiche();
-        cout << etats.back() << endl;
-        etats.back()->transition(this,s);
-    }
+    Symbole * s = lexer.Consulter();
+    etats.back()->transition(this,s);
 }
