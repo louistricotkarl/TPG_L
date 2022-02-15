@@ -76,7 +76,8 @@ void Automate::Reduction(int r){
             for(int i = 0; i < 3;i++){
                 etats.pop_back();
             }
-            cout << tmp << endl;
+
+
             etats.back()->transition(this,(new Expression(tmp)));
             break;
     }

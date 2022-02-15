@@ -7,13 +7,11 @@
 #include "Etat2.h"
 #include "Etat8.h"
 
-#include <iostream>
-using namespace std;
 
 
 void Etat5::transition(Automate * d, Symbole * s){
 
-    cout << "Transition Etat5 avec symbole " << Etiquettes[*s] << endl;
+
     switch(*s) {
         case INT :
             d->Decalage(new Etat3(), s);
