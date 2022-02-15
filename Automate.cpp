@@ -9,10 +9,7 @@
 using namespace std;
 
 Automate::Automate(Lexer &l) : lexer(l) {
-
-    Etat0 * e = new Etat0();
-    etats.push_back(e);
-
+    stop = false;
     Execute();
 }
 
@@ -21,24 +18,20 @@ void Automate::Decalage(Etat * e, Symbole * s){
     symboles.push_back(s);
     if(*s != EXPR){
         lexer.Avancer();
-        s = lexer.Consulter();
-        etats.back()->transition(this,s);
     }
 
 }
 
 void Automate::Error(){
-    5/0;
+   // 5/0;
 };
 
 void Automate::Accepter(){
-    cout << "FINISHED" << endl;
+    stop = true;
 }
 
 void Automate::Reduction(int r){
-
     int tmp;
-
     switch(r){
         case 5:
             tmp = ((Entier *)symboles.back())->GetValeur();
@@ -57,7 +50,6 @@ void Automate::Reduction(int r){
             for(int i = 0; i < 3;i++){
                 etats.pop_back();
             }
-
             etats.back()->transition(this,(new Expression(tmp)));
 
             break;
@@ -71,6 +63,7 @@ void Automate::Reduction(int r){
             for(int i = 0; i < 3;i++){
                 etats.pop_back();
             }
+
             etats.back()->transition(this,(new Expression(tmp)));
             break;
 
@@ -83,13 +76,24 @@ void Automate::Reduction(int r){
             for(int i = 0; i < 3;i++){
                 etats.pop_back();
             }
-
+            cout << tmp << endl;
             etats.back()->transition(this,(new Expression(tmp)));
             break;
     }
 
 }
 void Automate::Execute() {
-    Symbole * s = lexer.Consulter();
-    etats.back()->transition(this,s);
+    Etat0 * e = new Etat0();
+    etats.push_back(e);
+
+    Symbole * s ;
+
+    while(*(s=lexer.Consulter())!=FIN) {
+        etats.back()->transition(this,s);
+
+    }
+    while(!stop)
+        etats.back()->transition(this,s);
+
+    cout << "Result : " << ((Entier *)symboles.back())->GetValeur() << endl;
 }

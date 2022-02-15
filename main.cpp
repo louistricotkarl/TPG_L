@@ -4,7 +4,7 @@
 
 
 int main(void) {
-   string chaine("(1+34)*123");
+   string chaine("1+2+3+4*5*(5+5+3)");
    Lexer l(chaine);
    Automate a(l);
 

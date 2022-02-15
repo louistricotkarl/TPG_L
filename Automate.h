@@ -41,6 +41,7 @@ private :
     Lexer lexer;
     deque<Etat*> etats;
     deque<Symbole*> symboles;
+    bool stop;
 };
 
 

@@ -10,6 +10,7 @@
 
 void Etat0::transition(Automate * d, Symbole * s){
 
+    cout << "Transition Etat0 avec symbole " << Etiquettes[*s] << endl;
     switch(*s) {
         case INT :
             d->Decalage(new Etat3(), s);

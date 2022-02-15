@@ -7,10 +7,12 @@
 #include "Etat5.h"
 #include "Etat9.h"
 
+#include <iostream>
 using namespace std;
 
-void Etat6::transition(Automate * d, Symbole * s){
 
+void Etat6::transition(Automate * d, Symbole * s){
+    cout << "Transition Etat6 avec symbole " << Etiquettes[*s] << endl;
     switch(*s) {
         case PLUS :
             d->Decalage(new Etat4(), s);
@@ -20,6 +22,7 @@ void Etat6::transition(Automate * d, Symbole * s){
             break;
         case CLOSEPAR:
             d->Decalage(new Etat9(), s);
+            break;
         default:
             d->Error();
     }

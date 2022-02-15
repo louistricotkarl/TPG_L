@@ -6,10 +6,12 @@
 #include "Etat3.h"
 #include "Etat5.h"
 
+#include <iostream>
 using namespace std;
 
-void Etat8::transition(Automate * d, Symbole * s){
 
+void Etat8::transition(Automate * d, Symbole * s){
+    cout << "Transition Etat8 avec symbole " << Etiquettes[*s] << endl;
     switch(*s) {
         case PLUS :
             d->Reduction(3);
