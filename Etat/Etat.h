@@ -15,13 +15,9 @@ class Etat {
 
 public :
     Etat(){
-
     }
-
     ~Etat(){
-
     }
-
     virtual void transition(Automate * d, Symbole * s) = 0;
 };
 

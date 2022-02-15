@@ -26,6 +26,10 @@ public:
 
     }
 
+    void Decalage(Etat * e, Symbole * s);
+
+    void Error();
+
     void Execute();
 
 

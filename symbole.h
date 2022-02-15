@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-enum Identificateurs { OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR };
+enum Identificateurs { OPENPAR, CLOSEPAR, PLUS, MULT, INT, FIN, ERREUR, EXPR };
 
 const string Etiquettes[] = { "OPENPAR", "CLOSEPAR", "PLUS", "MULT", "INT", "FIN", "ERREUR" };
 
@@ -27,6 +27,11 @@ class Entier : public Symbole {
       int valeur;
 };
 
-class Expression : public Entier{
-
+class Expression : public Symbole {
+    public:
+        Entier(int v) : Symbole(INT), valeur(v) { }
+        ~Entier() { }
+        virtual void Affiche();
+    protected:
+        int valeur;
 };
