@@ -5,7 +5,7 @@
 #ifndef UNTITLED_ETAT0_H
 #define UNTITLED_ETAT0_H
 
-#include "etat.h"
+#include "Etat.h"
 #include "../symbole.h"
 #include "../Automate.h"
 

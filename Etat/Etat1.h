@@ -9,7 +9,18 @@
 
 class Etat1 : public Etat{
 
+public :
+
+    Etat1(){
+
+    }
+    ~Etat1() {
+
+    }
+    
+    virtual void transition(Automate * d, Symbole * s);
 };
+
 
 
 #endif

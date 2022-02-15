@@ -7,7 +7,13 @@
 
 
 class Etat4 {
+    Etat4(){
 
+    }
+    ~Etat4() {
+
+    }
+    virtual void transition(Automate * d, Symbole * s);
 };
 
 

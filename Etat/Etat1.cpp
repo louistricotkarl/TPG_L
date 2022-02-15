@@ -3,3 +3,7 @@
 //
 
 #include "Etat1.h"
+
+void Etat1::transition(Automate * d, Symbole * s){
+    s->Affiche();
+}

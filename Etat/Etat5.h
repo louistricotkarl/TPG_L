@@ -7,7 +7,15 @@
 
 
 class Etat5 {
+public :
 
+    Etat5(){
+
+    }
+    ~Etat5() {
+
+    }
+    virtual void transition(Automate * d, Symbole * s);
 };
 
 
